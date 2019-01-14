@@ -1,6 +1,5 @@
 import smtplib
 from email.mime.text import MIMEText
-from config import *
 
 
 class SendMali(object):
@@ -10,6 +9,9 @@ class SendMali(object):
         self.mail_pass = ''
         self.sender = ''
         self.receivers = ['']
+        self.searchDepartureAirport = ''
+        self.searchArrivalAirport = ''
+        self.searchDepartureTime = ''
 
     def send(self, flights):
         """
@@ -73,7 +75,7 @@ class SendMali(object):
         message = MIMEText(message, 'plain', 'utf-8')
         # 邮件主题
         message[
-            'Subject'] = '机票信息 ' + searchDepartureAirport + '-' + searchArrivalAirport + ' ' + searchDepartureTime
+            'Subject'] = '机票信息 ' + self.searchDepartureAirport + '-' + self.searchArrivalAirport + ' ' + self.searchDepartureTime
         # 发送方信息
         message['From'] = self.sender
         # 接受方信息
